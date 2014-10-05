@@ -1,0 +1,11 @@
+require "rails_helper"
+
+RSpec.describe WelcomeController, :type => :routing do
+  describe "routing" do
+
+    it "routes to #index" do
+      expect(:get => "/welcome").to route_to("welcome#index")
+    end
+
+  end
+end

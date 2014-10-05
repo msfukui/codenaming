@@ -1,6 +1,9 @@
 ## README
 
-`codenaming` is naming service for class, module, method, variable in source code.
+`codenaming` is naming helper service.
+
+It will help that you name a class, module, methods, variables in your source code.
+
 coming soon.
 
 ### Ruby/Rails version
