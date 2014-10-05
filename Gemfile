@@ -40,6 +40,8 @@ gem 'spring',        group: :development
 #
 # add gems.
 #
+gem 'twitter-bootstrap-rails'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
