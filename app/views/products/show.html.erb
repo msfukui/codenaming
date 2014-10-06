@@ -1,3 +1,5 @@
+<h1>Product: <%= @product.name %></h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -13,6 +15,18 @@
 <p>
   <strong>Path:</strong>
   <%= @product.path %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <strong>(Class) </strong><%= @items.where(kind: :class ).count %>,
+  <strong>(Module)</strong><%= @items.where(kind: :module).count %>,
+  <strong>(Method)</strong><%= @items.where(kind: :method).count %>
+</p>
+
+<p>
+<%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary active", role: "button" %>
+<%= link_to 'Back', products_path, class: "btn btn-default active", role: "button" %>
 </p>
 
 <table class="table table-hover">
@@ -34,6 +48,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary active", role: "button" %>
-<%= link_to 'Back', products_path, class: "btn btn-default active", role: "button" %>
