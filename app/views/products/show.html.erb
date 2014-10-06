@@ -12,8 +12,28 @@
 
 <p>
   <strong>Path:</strong>
-  <%= @product.version %>
+  <%= @product.path %>
 </p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Kind</th>
+      <th>File</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.kind %></td>
+        <td><%= item.file %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary active", role: "button" %>
 <%= link_to 'Back', products_path, class: "btn btn-default active", role: "button" %>
