@@ -22,7 +22,7 @@ namespace :crawling_products do
       Dir.chdir( "tmp/#{product.name}-#{product.version}" )
       Find.find( "." ) do |file|
         unless File.directory?(file)
-          if file =~ /\.rb$/ && !(file =~ /\/[test|spec]\//)
+          if file =~ /\.rb$/ && !(file.include?("/test/")) && !(file.include?("/spec/"))
             rw = RipperWrapper.new(File.open(file).read)
             rw.parse
             rw.code[:classes].each do |i|
