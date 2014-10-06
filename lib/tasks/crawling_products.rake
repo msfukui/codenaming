@@ -19,9 +19,10 @@ namespace :crawling_products do
         end
       end
 
-      Find.find( "tmp/#{product.name}-#{product.version}" ) do |file|
+      Dir.chdir( "tmp/#{product.name}-#{product.version}" )
+      Find.find( "." ) do |file|
         unless File.directory?(file)
-          if file =~ /\.rb$/
+          if file =~ /\.rb$/ && !(file =~ /\/[test|spec]\//)
             rw = RipperWrapper.new(File.open(file).read)
             rw.parse
             rw.code[:classes].each do |i|
@@ -53,12 +54,12 @@ namespace :crawling_products do
       end
 
       begin
+        Dir.chdir("../..")
         system("rm -fr tmp/#{product.name}-#{product.version}")
       rescue => e
         logger.error "#{Time.now} : rm_error : #{product.name} : #{$?}(#{e})"
         raise
       end
-
     end
 
     logger.close
